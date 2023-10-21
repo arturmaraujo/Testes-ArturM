@@ -1,0 +1,23 @@
+// Dado que eu tenha criado a cópia de uma imagem no Google Drive
+// Quando seleciono o botão com três pontos no canto superior da imagem duplicada
+// E seleciono a opção "Mover para lixeira"
+// Então a imagem é movida para lixeira e deletada da pasta "Teste1".
+
+describe('Mover para lixeira', () => {
+  it('Deve mover uma imagem duplicada para a lixeira', () => {
+    // Abre o Google Drive
+    cy.visit('https://drive.google.com');
+
+    // Aguarda a imagem duplicada com o nome "Cópia" (ou o nome correto)
+    cy.contains('Cópia').click();
+
+    // Clica no botão com três pontos (ações da imagem duplicada)
+    cy.get('div[aria-label="Cópia"]').click();
+
+    // Seleciona a opção "Mover para lixeira"
+    cy.contains('Mover para lixeira').click();
+
+    // Aguarda a imagem ser movida para a lixeira
+    cy.contains('Cópia').should('not.exist');
+  });
+});
