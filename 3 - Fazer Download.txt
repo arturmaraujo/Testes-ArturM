@@ -1,0 +1,26 @@
+// Dado que eu tenha criado a cópia de uma imagem existente no Google Drive
+// Quando seleciono o botão com três pontos no canto superior da imagem duplicada
+// E seleciono a opção "Fazer Download"
+// Então o download é realizado e a imagem salva em meu dispositivo.
+
+describe('Fazer Download', () => {
+  it('Deve fazer o download de uma imagem duplicada', () => {
+    // Abre o Google Drive
+    cy.visit('https://drive.google.com');
+
+    // Aguarda a imagem duplicada com o nome "Cópia" (ou o nome correto)
+    cy.contains('Cópia').click();
+
+    // Clica no botão com três pontos (ações da imagem duplicada)
+    cy.get('div[aria-label="Cópia"]').click();
+
+    // Seleciona a opção "Fazer Download"
+    cy.contains('Fazer Download').click();
+
+    // Aguarda o download ser concluído (pode variar dependendo do tamanho da imagem)
+    cy.wait(10000); // Aguarda por 10 segundos (pode ser ajustado)
+
+    // Verifica se o download foi realizado e a imagem está no dispositivo
+    // Você pode adicionar aqui código Cypress para verificar a existência do arquivo no sistema de arquivos local.
+  });
+});
