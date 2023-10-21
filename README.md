@@ -1,4 +1,4 @@
-Olá! Este projeto tem como objetivo realizar a automatização de cenários de testes a serem executados no Google Drive. Neste projeto realizaremos a criação de pasta, cópia de arquivo, alteração do nome e exclusão na seguinte ordem:
+Olá! Este projeto tem como objetivo realizar a automatização de cenários de testes a serem executados no Google Drive. Neste projeto realizaremos a criação de pasta, cópia de arquivo, download, alteração de nome e exclusão na seguinte ordem:
 
 1 - Criar Pasta
 2 - Fazer uma cópia
