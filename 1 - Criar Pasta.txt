@@ -1,0 +1,23 @@
+// Dado que eu tenho acesso ao Google Drive
+// Quando seleciono do botão "novo" para criação de uma pasta
+// E informo o nome "Teste1" no campo "Nova Pasta"
+// Então é criada uma nova pasta com o nome informado.
+
+describe('Criar pasta', () => {
+  it('Deve criar uma nova pasta com o nome informado', () => {
+    // Abre o Google Drive
+    cy.visit('https://drive.google.com');
+
+    // Clica no botão "Novo" para criar uma pasta
+    cy.contains('Novo').click();
+
+    // Clica na opção "Pasta"
+    cy.contains('Pasta').click();
+
+    // Digita o nome da pasta no campo "Nova Pasta" e pressiona Enter
+    cy.get('input[placeholder="Nova Pasta"]').type('Teste1{enter}');
+
+    // Verifica se a pasta foi criada com sucesso
+    cy.contains('Teste1').should('exist');
+  });
+});
