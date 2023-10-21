@@ -1,0 +1,35 @@
+// Dado que eu tenha adicionado uma imagem à pasta "Teste1" no Google Drive
+// Quando seleciono o botão com três pontos no canto superior da imagem
+// E seleciono a opção "Fazer uma cópia"
+// Então a imagem é duplicada com o nome inicial "Cópia".
+
+describe('Fazer uma cópia', () => {
+  it('Deve duplicar uma imagem com o nome inicial "Cópia"', () => {
+    // Abre o Google Drive
+    cy.visit('https://drive.google.com');
+
+    // Aguarda a pasta "Teste1" e entra nela
+    cy.contains('Teste1').click();
+
+    // Faz o upload de uma imagem (substitua pelo caminho da imagem real)
+    cy.get('input[type="file"]').attachFile('caminho/para/sua/imagem.jpg');
+
+    // Aguarda a imagem ser carregada (pode variar dependendo do tamanho da imagem)
+    cy.wait(10000); // Aguarda por 10 segundos (pode ser ajustado)
+
+    // Encontra a imagem
+    cy.contains('Sua imagem').should('exist');
+
+    // Clica no botão com três pontos (ações da imagem)
+    cy.get('div[aria-label="Sua imagem"]').click();
+
+    // Seleciona a opção "Fazer uma cópia"
+    cy.contains('Fazer uma cópia').click();
+
+    // Aguarda a imagem duplicada ser criada (pode variar dependendo da velocidade do Google Drive)
+    cy.wait(5000); // Aguarda por 5 segundos (pode ser ajustado)
+
+    // Verifica se a imagem duplicada com o nome "Cópia" existe
+    cy.contains('Cópia de Sua imagem').should('exist');
+  });
+});
