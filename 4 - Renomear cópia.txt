@@ -1,0 +1,27 @@
+// Dado que eu tenha criado a cópia de uma imagem no Google Drive
+// Quando seleciono o botão com três pontos no canto superior da imagem duplicada
+// E seleciono a opção "Renomear"
+// E confirmo a alteração após informar "ExcluirCópia" no campo apresentado
+// Então o nome da imagem é alterado.
+
+describe('Renomear cópia', () => {
+  it('Deve renomear uma imagem duplicada para "ExcluirCópia"', () => {
+    // Abre o Google Drive
+    cy.visit('https://drive.google.com');
+
+    // Aguarda a imagem duplicada com o nome "Cópia" (ou o nome correto)
+    cy.contains('Cópia').click();
+
+    // Clica no botão com três pontos (ações da imagem duplicada)
+    cy.get('div[aria-label="Cópia"]').click();
+
+    // Seleciona a opção "Renomear"
+    cy.contains('Renomear').click();
+
+    // Digita o novo nome "ExcluirCópia" no campo apresentado e pressiona Enter
+    cy.get('input[aria-label="Nome do arquivo"]').clear().type('ExcluirCópia{enter}');
+
+    // Aguarda a imagem ser renomeada
+    cy.contains('ExcluirCópia').should('exist');
+  });
+});
